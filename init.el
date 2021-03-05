@@ -320,6 +320,14 @@
 
 (use-package rotate)
 (use-package graphql-mode)
+;; https://skoji.jp/blog/2020/01/plantuml.html
+(use-package plantuml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+  (setq plantuml-executable-path "plantuml")
+  (setq plantuml-default-exec-mode 'executable)
+  (setq plantuml-output-type "png")
+  (setq plantuml-executable-args (append plantuml-executable-args '("-charset" "UTF-8"))))
 
 (use-package beacon)
 (use-package pulse
