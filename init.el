@@ -105,8 +105,8 @@
   :hook (ruby-mode . ruby-mode-custom-hook))
 
 (use-package rubocop
-  :config
-  (add-hook 'ruby-mode-hook '(lambda()  (rubocop-mode)))
+  :hook
+  (ruby-mode . rubocop-mode)
   :bind (("C-c , R" . rubocop-autocorrect-current-file)
          ("C-c C-, C-r" . rubocop-autocorrect-current-file)))
 
@@ -294,7 +294,8 @@
   (setq compilation-scroll-output "first-error")
   (defun rspec-runner () "bin/rspec")
   ;; @see https://github.com/pezra/rspec-mode#debugging
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  :hook
+  (after-init . inf-ruby-switch-setup)
   :bind (("C-c C-, C-v" . rspec-verify)
          ("C-c C-, C-s" . rspec-verify-single))
   )
