@@ -106,9 +106,9 @@
 
 (use-package rubocop
   :config
-  (add-hook 'ruby-mode-hook '(lambda()
-  (rubocop-mode)
-  (local-set-key (kbd "C-c , R") 'rubocop-autocorrect-current-file))))
+  (add-hook 'ruby-mode-hook '(lambda()  (rubocop-mode)))
+  :bind (("C-c , R" . rubocop-autocorrect-current-file)
+         ("C-c C-, C-r" . rubocop-autocorrect-current-file)))
 
 (use-package recentf
   :config
@@ -291,9 +291,13 @@
 (use-package rspec-mode
   :config
   (setq rspec-use-spring-when-possible nil)
+  (setq compilation-scroll-output "first-error")
   (defun rspec-runner () "bin/rspec")
   ;; @see https://github.com/pezra/rspec-mode#debugging
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+  (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  :bind (("C-c C-, C-v" . rspec-verify)
+         ("C-c C-, C-s" . rspec-verify-single))
+  )
 
 (use-package yaml-mode
   :mode (".yaml$")
