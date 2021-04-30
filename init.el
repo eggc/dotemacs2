@@ -85,12 +85,7 @@
   :config
   (setq ruby-insert-encoding-magic-comment nil)
   (setq ruby-deep-indent-paren-style nil)
-  :mode (("\\Gemfile$" . ruby-mode)
-         ("\\Schemafile$" . ruby-mode)
-         ("\\Steepfile$" . ruby-mode)
-         ("\\ruby$" . ruby-mode)
-         ("\\rbs$" . ruby-mode)
-         ("\\.rake$" . ruby-mode))
+  :mode ("\\Gemfile$" "\\Schemafile$" "\\Steepfile$" "\\ruby$" "\\rbs$" "\\.rake$")
   :init
   (defun ruby-mode-custom-hook ()
     (interactive)
@@ -220,7 +215,7 @@
 
 (use-package direnv
   :if (file-exists-p "/usr/local/bin/direnv")
-  :mode (("\\.env$" . sh-mode))
+  :mode ("\\.env$" . sh-mode)
   :config
   (setq direnv-always-show-summary nil)
   (direnv-mode))
@@ -264,8 +259,7 @@
   (add-hook 'web-mode-hook (lambda()
     (setq web-mode-code-indent-offset 2)
     (setq web-mode-markup-indent-offset 2)))
-  :mode (("\\.js[x]?$" . web-mode)
-         ("\\.ts[x]?$" . web-mode)))
+  :mode ("\\.js[x]?$" "\\.ts[x]?$"))
 
 (use-package eww
   :config
@@ -333,8 +327,8 @@
 (use-package graphql-mode)
 ;; https://skoji.jp/blog/2020/01/plantuml.html
 (use-package plantuml-mode
+  :mode ("\\.plantuml\\'" "\\.uml\\'")
   :config
-  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
   (setq plantuml-executable-path "plantuml")
   (setq plantuml-default-exec-mode 'executable)
   (setq plantuml-output-type "png")
