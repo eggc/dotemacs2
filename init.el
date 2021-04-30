@@ -72,7 +72,6 @@
   :ensure nil
   :config
   (add-hook 'org-mode-hook (lambda ()
-  (setq org-agenda-files '("~/work/text/report.org"))
   (setq org-hide-leading-stars t)
   (setq org-hide-emphasis-markers t)
   (setq org-indent-indentation-per-level 8)
