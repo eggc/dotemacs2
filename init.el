@@ -221,6 +221,7 @@
 
 (use-package direnv
   :if (file-exists-p "/usr/local/bin/direnv")
+  :mode (("\\.env$" . sh-mode))
   :config
   (setq direnv-always-show-summary nil)
   (direnv-mode))
