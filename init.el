@@ -200,6 +200,7 @@
   (setq magit-completing-read-function 'ivy-completing-read)
   (setq magit-diff-refine-hunk t)
   (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
   :chords (("gh" . magit-status))
 )
 
