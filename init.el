@@ -199,6 +199,8 @@
   :init (global-company-mode)
   :bind (("C-M-i" . company-complete)))
 
+(use-package browse-at-remote)
+
 (use-package magit
   :config
   (setq magit-completing-read-function 'ivy-completing-read)
