@@ -125,7 +125,8 @@
 (use-package ivy-xref
   :init
   (setq xref-show-definitions-function #'ivy-xref-show-defs)
-  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
+  (setq ivy-xref-use-file-path t))
 
 (use-package dired
   :ensure nil
