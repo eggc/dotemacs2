@@ -174,6 +174,7 @@
   :config
   (setq projectile-project-search-path '("~/"))
   (setq projectile-completion-system 'ivy)
+  (setq projectile-use-git-grep t)
   (projectile-mode +1)
   :bind-keymap
   ("C-c p" . projectile-command-map)
