@@ -112,11 +112,12 @@
 
 (use-package ivy
   :config
-  (ivy-configure 'counsel-M-x :initial-input "")
   (setq counsel-find-file-at-point t)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
-  (ivy-mode))
+  (ivy-mode)
+  :custom
+  (ivy-initial-inputs-alist nil))
 
 (use-package counsel
   :config
