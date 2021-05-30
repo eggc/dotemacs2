@@ -280,11 +280,23 @@
   :config
   (setq js-indent-level 2))
 
+(use-package typescript-mode)
 (use-package tide
-  :after (typescript-mode company flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+  :after (typescript-mode company)
+  :init
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (setq company-tooltip-align-annotations t)
+    (setq typescript-indent-level 2)
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    (company-mode +1))
+  :hook
+  (before-save . tide-format-before-save)
+  (typescript-mode . setup-tide-mode))
 
 (use-package yasnippet
   :config
