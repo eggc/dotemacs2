@@ -51,7 +51,7 @@
   (add-hook 'org-mode-hook (lambda ()
   (setq org-hide-leading-stars t)
   (setq org-hide-emphasis-markers t)
-  (setq org-indent-indentation-per-level 8)
+  (defvar org-indent-indentation-per-level 8)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "|" "DONE")))
   (local-unset-key (kbd "M-h"))
   (local-unset-key (kbd "C-M-t"))
@@ -65,7 +65,7 @@
 
 (use-package ivy
   :config
-  (setq counsel-find-file-at-point t)
+  (defvar counsel-find-file-at-point t)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
   (ivy-mode)
@@ -108,8 +108,8 @@
   :config
   (setf wgrep-enable-key "r")
   (setq wgrep-auto-save-buffer t)
-  (setq my-ignore-directories '("node_modules" ".bundle" "yardoc" "coverage" "log" "tmp"))
-  (setq my-ignore-files '("*.min.js" "*.log" "*bundle.js"))
+  (defvar my-ignore-directories '("node_modules" ".bundle" "yardoc" "coverage" "log" "tmp"))
+  (defvar my-ignore-files '("*.min.js" "*.log" "*bundle.js"))
   (setq grep-find-ignored-directories (append grep-find-ignored-directories my-ignore-directories))
   (setq grep-find-ignored-files (append grep-find-ignored-files my-ignore-files))
 )
@@ -189,8 +189,7 @@
   (setq dumb-jump-max-find-time 5)
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-  :chords (("dj" . xref-find-definitions)
-           ("p@" . dumb-jump-go-prompt)))
+  :chords (("dj" . xref-find-definitions)))
 
 (use-package spaceline)
 (use-package spaceline-config
@@ -198,8 +197,7 @@
   :config
   (spaceline-emacs-theme)
   (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-version-control-off)
-)
+  (spaceline-toggle-version-control-off))
 
 (use-package paradox
  :custom

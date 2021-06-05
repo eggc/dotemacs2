@@ -4,7 +4,7 @@
 ; https://github.com/senny/rbenv.el
 (use-package rbenv
   :config
-  (setq rbenv-show-active-ruby-in-modeline nil)
+  (defvar rbenv-show-active-ruby-in-modeline nil)
   (global-rbenv-mode))
 
 (use-package ruby-mode

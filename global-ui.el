@@ -7,14 +7,14 @@
 (global-auto-revert-mode 1)
 
 (electric-pair-mode 1)
-(setq show-paren-delay 0)
-(setq show-paren-style 'expression)
+(defvar show-paren-delay 0)
+(defvar show-paren-style 'expression)
+(defvar x-select-enable-clipboard t)
+(defvar x-select-enable-primary t)
+(defvar ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq-default indent-tabs-mode nil)
-(setq x-select-enable-clipboard t)
-(setq x-select-enable-primary t)
 (setq save-interprogram-paste-before-kill t)
 (setq require-final-newline t)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq backup-directory-alist `((".*". ,temporary-file-directory)))
 (setq kill-ring-max 500)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -27,6 +27,6 @@
 ;; これ効いてなさそう
 (set-face-attribute 'show-paren-match nil :inherit 'highlight :underline 'unspecified)
 
-(setq my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
+(defconst my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
 (set-face-attribute 'default nil :family my-font :height 200)
 (set-fontset-font t 'japanese-jisx0208 (font-spec :family my-font)) ; これがないと一部の漢字のフォントがおかしくなる
