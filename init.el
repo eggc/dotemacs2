@@ -10,6 +10,16 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :config
+  (setq exec-path-from-shell-arguments ())
+  (exec-path-from-shell-initialize))
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 (eg-load "ruby")
 
 (use-package use-package-chords
@@ -87,12 +97,6 @@
               ("r" . 'wdired-change-to-wdired-mode)))
 (use-package dired-subtree)
 (use-package wdired)
-
-(use-package exec-path-from-shell
-  :if (memq window-system '(mac ns x))
-  :config
-  (setq exec-path-from-shell-arguments ())
-  (exec-path-from-shell-initialize))
 
 (use-package coffee-mode
   :config

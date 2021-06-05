@@ -1,3 +1,12 @@
+; flycheck を使うために rubocop をインストールしておく
+; 場合によっては rubocop-rails, rubocop-performance をインストールする
+
+; https://github.com/senny/rbenv.el
+(use-package rbenv
+  :config
+  (setq rbenv-show-active-ruby-in-modeline nil)
+  (global-rbenv-mode))
+
 (use-package ruby-mode
   :ensure nil
   :config
@@ -36,9 +45,3 @@
 
 (use-package ruby-electric
   :hook ((ruby-mode . ruby-electric-mode)))
-
-; https://github.com/senny/rbenv.el
-(use-package rbenv
-  :config
-  (setq rbenv-show-active-ruby-in-modeline nil)
-  (global-rbenv-mode))
