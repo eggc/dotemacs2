@@ -28,10 +28,7 @@
 (eg-load "ivy")
 (eg-load "ruby")
 (eg-load "git")
-
-(use-package rebecca-theme
-  :config
-  (load-theme 'rebecca t))
+(eg-load "ui")
 
 (use-package coffee-mode
   :config
@@ -106,14 +103,6 @@
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :chords (("dj" . xref-find-definitions)))
-
-(use-package spaceline)
-(use-package spaceline-config
-  :ensure nil
-  :config
-  (spaceline-emacs-theme)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-version-control-off))
 
 (use-package paradox
  :custom
@@ -196,18 +185,6 @@
   (setq plantuml-default-exec-mode 'executable)
   (setq plantuml-output-type "png")
   (setq plantuml-executable-args (append plantuml-executable-args '("-charset" "UTF-8"))))
-
-(use-package beacon)
-(use-package pulse
-  :after beacon
-  :config
-  (defun pulse-line (&rest _)
-    "Pulse the current line."
-    (pulse-momentary-highlight-one-line (point)))
-
-  (dolist (command '(scroll-up-command scroll-down-command
-                                       recenter-top-bottom other-window))
-    (advice-add command :after #'pulse-line)))
 
 ;; (use-package lsp-mode
 ;;   :if (executable-find "solargraph")
