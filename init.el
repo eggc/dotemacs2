@@ -10,6 +10,10 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package use-package-chords
+  :ensure t
+  :config (key-chord-mode 1))
+
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
@@ -21,10 +25,7 @@
   :init (global-flycheck-mode))
 
 (eg-load "ruby")
-
-(use-package use-package-chords
-  :ensure t
-  :config (key-chord-mode 1))
+(eg-load "git")
 
 (use-package replace
   :ensure nil
@@ -139,25 +140,6 @@
   :bind (("C-M-i" . company-complete)))
 
 (use-package browse-at-remote)
-
-(use-package magit
-  :config
-  (setq magit-completing-read-function 'ivy-completing-read)
-  (setq magit-diff-refine-hunk t)
-  (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
-  :chords (("gh" . magit-status))
-)
-
-(use-package forge
-  :after magit
-  :config
-  ;; (remove-hook 'magit-status-sections-hook 'forge-insert-pullreqs)
-  ;; (remove-hook 'magit-status-sections-hook 'forge-insert-issues)
-  (setq forge-topic-list-columns
-        '(("#" 5 forge-topic-list-sort-by-number (:right-align t) number nil)
-          ("Assignees" 15 t nil assignees nil)
-          ("Title" 35 t nil title  nil))))
 
 (use-package direnv
   :if (file-exists-p "/usr/local/bin/direnv")
