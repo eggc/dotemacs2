@@ -1,51 +1,11 @@
-;; bootstrap straight https://github.com/raxod502/straight.el#getting-started
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-(straight-use-package 'use-package)
+(load "~/work/dotemacs2/bootstrap")
+(eg-load "global-keybind")
+(eg-load "global-ui")
+(eg-load "functions")
 
-(defun other-window-back ()
-  (interactive)
-  (other-window -1))
-
-(keyboard-translate ?\C-h ?\C-?)                           ; C-h で delete を発行
-(global-set-key (kbd "M-h") 'backward-kill-word)
-(global-set-key (kbd "C-t") 'other-window)
-(global-set-key (kbd "M-t") 'other-window-back)
-(global-set-key (kbd "C-M-t") 'other-frame)
-(global-set-key (kbd "C-x SPC") 'cua-rectangle-mark-mode)  ; 矩形選択/入力
-(global-set-key (kbd "C-c l") 'toggle-truncate-lines)      ; 行末で折り返す <-> 折り返さない
-
-(setq my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
-(set-face-attribute 'default nil :family my-font :height 200)
-(set-fontset-font t 'japanese-jisx0208 (font-spec :family my-font)) ; これがないと一部の漢字のフォントがおかしくなる
-
-(add-hook 'occur-mode-hook (lambda ()
-  (next-error-follow-minor-mode)
-  (local-set-key (kbd "n") 'next-line)
-  (local-set-key (kbd "p") 'previous-line)))
-
-(global-set-key (kbd "s-f") 'find-file)                    ; C-x C-f
-(global-set-key (kbd "s-b") 'switch-to-buffer)             ; C-x b
-(global-set-key (kbd "s-0") 'delete-window)                ; C-x 0
-(global-set-key (kbd "s-1") 'delete-other-windows)         ; C-x 1
-(global-set-key (kbd "s-2") 'split-window-vertically)      ; C-x 2
-(global-set-key (kbd "s-3") 'split-window-horizontally)    ; C-x 3
-(global-set-key (kbd "s-t") 'make-frame-command)           ; C-x 5 2
-(global-set-key (kbd "s-D") 'split-window-vertically)      ; iterm と同じ
-(global-set-key (kbd "s-d") 'split-window-horizontally)    ; iterm と同じ
-(global-set-key (kbd "s-q") 'version)                      ; 誤操作防止用
-(global-set-key (kbd "M-i") 'imenu)
-(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+(package-initialize)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -54,8 +14,13 @@
   :ensure t
   :config (key-chord-mode 1))
 
-(use-package eguchi-ken
-  :straight (eguchi-ken :type git :host github :repo "eguchi-ken/eguchi-ken.el"))
+(use-package replace
+  :ensure nil
+  :config
+  (add-hook 'occur-mode-hook (lambda ()
+  (next-error-follow-minor-mode)
+  (local-set-key (kbd "n") 'next-line)
+  (local-set-key (kbd "p") 'previous-line))))
 
 (use-package rebecca-theme
   :config
@@ -348,6 +313,10 @@
 
 (use-package rotate)
 (use-package graphql-mode)
+;; (use-package nvm
+;;   :config
+;;   (nvm-use "v10.19.0"))
+
 ;; https://skoji.jp/blog/2020/01/plantuml.html
 (use-package plantuml-mode
   :mode ("\\.plantuml\\'" "\\.uml\\'")
@@ -369,6 +338,15 @@
                                        recenter-top-bottom other-window))
     (advice-add command :after #'pulse-line)))
 
+;; (use-package lsp-mode
+;;   :if (executable-find "solargraph")
+;;   :init (setq lsp-keymap-prefix "M-p")
+;;   :hook ((ruby-mode . lsp))
+;;   :commands lsp)
+
+;; (use-package lsp-ui :commands lsp-ui-mode)
+;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package which-key :config (which-key-mode))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -385,5 +363,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (wgrep ripgrep yaml-mode web-mode use-package twittering-mode tide spaceline smex slim-mode rubocop rspec-mode rjsx-mode restclient rebecca-theme rbenv projectile-rails paradox nvm key-chord jest idomenu ido-vertical-mode ido-completing-read+ gist forge exec-path-from-shell evil-string-inflection dumb-jump doom-modeline direnv dired-subtree dashboard csv-mode counsel coffee-mode atom-one-dark-theme))))
+   '(wgrep ripgrep yaml-mode web-mode use-package twittering-mode tide spaceline smex slim-mode rubocop rspec-mode rjsx-mode restclient rebecca-theme rbenv projectile-rails paradox nvm key-chord jest idomenu ido-vertical-mode ido-completing-read+ gist forge exec-path-from-shell evil-string-inflection dumb-jump doom-modeline direnv dired-subtree dashboard csv-mode counsel coffee-mode atom-one-dark-theme)))
