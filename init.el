@@ -24,6 +24,11 @@
   :ensure t
   :init (global-flycheck-mode))
 
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode))
+(use-package tree-sitter-langs)
+
 (eg-load "built-in")
 (eg-load "ivy")
 (eg-load "ruby")
