@@ -18,4 +18,4 @@
 
 (defun eg-load (feature-name)
   "dotemacs2 の設定を読み込みます"
-  (load (concat dotemacs2-directory feature-name)))
+  (load (concat dotemacs2-directory "lib/" feature-name)))
