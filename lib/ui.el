@@ -8,7 +8,8 @@
   :config
   (spaceline-emacs-theme)
   (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-version-control-off))
+  (spaceline-toggle-version-control-off)
+  (spaceline-toggle-global-off))
 
 (use-package beacon)
 (use-package pulse
