@@ -2,6 +2,13 @@
   :mode ("\\.ts[x]?$"))
 (use-package tide
   :after (typescript-mode company)
+  :config
+  (setq tide-format-options
+        '(
+          :insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis nil
+          :insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets nil
+          :insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces nil
+          ))
   :init
   (defun setup-tide-mode ()
     (interactive)
