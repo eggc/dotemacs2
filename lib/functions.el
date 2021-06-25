@@ -41,3 +41,13 @@
       (format
        "echo -n $(LC_ALL=ja_JP date -v-%dd +'%%Y/%%m/%%d (%%a)')"
        (or diff 0)))))
+
+(defun quote-current-line ()
+  (interactive)
+  (let ((pos (point)))
+    (back-to-indentation)
+    (insert "'")
+    (move-end-of-line 1)
+    (insert "'")
+    (goto-char pos)
+    ))
