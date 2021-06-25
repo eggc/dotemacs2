@@ -20,7 +20,12 @@
 (defun file-full-path-org-link-to-clipboard ()
   "今開いているファイルの org link をクリップボードにコピーします"
   (interactive)
-  (to-clipboard (concat "[[" (file-full-path) "][" (file-name-nondirectory buffer-file-name) "]]")))
+  (let ((path (file-full-path))
+        (name (file-name-nondirectory buffer-file-name))
+        (word (thing-at-point 'symbol)))
+    (if word
+        (to-clipboard (concat "[[" path "][" name ": " word "]]"))
+      (to-clipboard (concat "[[" path "][" name "]]")))))
 
 (defun insert-current-time ()
   "現在時間をカレントバッファに出力します"
