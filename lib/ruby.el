@@ -1,7 +1,7 @@
-; flycheck を使うために rubocop をインストールしておく
-; 場合によっては rubocop-rails, rubocop-performance をインストールする
-
 ; https://github.com/senny/rbenv.el
+
+(custom-set-variables '(flycheck-ruby-rubocop-executable (concat dotemacs2-directory "bin/flycheck-ruby-rubocop.sh")))
+
 (use-package rbenv
   :config
   (defvar rbenv-show-active-ruby-in-modeline nil)
