@@ -31,7 +31,8 @@
 (use-package tree-sitter-langs)
 
 (eg-load "built-in")
-(eg-load "ivy")
+(eg-load "vertico")
+(eg-load "consult")
 (eg-load "ruby")
 (eg-load "typescript")
 (eg-load "git")
@@ -56,11 +57,11 @@
 (use-package projectile
   :config
   (setq projectile-project-search-path '("~/"))
-  (setq projectile-completion-system 'ivy)
   (setq projectile-use-git-grep t)
   (projectile-mode +1)
   :bind-keymap
   ("C-c p" . projectile-command-map)
+  ("s-ｐ" . projectile-command-map)
   ("s-p" . projectile-command-map))
 
 (use-package projectile-rails
@@ -105,7 +106,6 @@
 
 (use-package dumb-jump
   :config
-  (setq dumb-jump-selector 'ivy)
   (setq dumb-jump-max-find-time 5)
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)

@@ -1,6 +1,5 @@
 (use-package magit
   :config
-  (defvar magit-completing-read-function 'ivy-completing-read)
   (defvar magit-diff-refine-hunk t)
   (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
