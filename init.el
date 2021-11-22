@@ -28,7 +28,9 @@
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
   (global-tree-sitter-mode))
-(use-package tree-sitter-langs)
+(use-package tree-sitter-langs
+  :config
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . tsx)))
 
 (eg-load "built-in")
 (eg-load "vertico")
@@ -114,14 +116,6 @@
 (use-package paradox
  :custom
  (paradox-github-token t))
-
-(use-package web-mode
-  :config
-  (setq web-mode-content-types-alist '(("jsx"  . ".js[x]?\\'")))
-  (add-hook 'web-mode-hook (lambda()
-    (setq web-mode-code-indent-offset 2)
-    (setq web-mode-markup-indent-offset 2)))
-  :mode ("\\.js[x]?$"))
 
 (use-package js
   :config
