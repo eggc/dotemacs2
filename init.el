@@ -37,6 +37,7 @@
 (eg-load "typescript")
 (eg-load "git")
 (eg-load "ui")
+(eg-load "migemo")
 
 (use-package coffee-mode
   :config
