@@ -28,9 +28,7 @@
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
   (global-tree-sitter-mode))
-(use-package tree-sitter-langs
-  :config
-  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-mode . tsx)))
+(use-package tree-sitter-langs)
 
 (eg-load "built-in")
 (eg-load "vertico")
