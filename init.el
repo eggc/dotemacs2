@@ -168,16 +168,6 @@
   (setq plantuml-output-type "png")
   (setq plantuml-executable-args (append plantuml-executable-args '("-charset" "UTF-8"))))
 
-;; (use-package lsp-mode
-;;   :if (executable-find "solargraph")
-;;   :init (setq lsp-keymap-prefix "M-p")
-;;   :hook ((ruby-mode . lsp))
-;;   :commands lsp)
-
-;; (use-package lsp-ui :commands lsp-ui-mode)
-;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-;; (use-package which-key :config (which-key-mode))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
