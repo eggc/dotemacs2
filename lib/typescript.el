@@ -1,4 +1,6 @@
 (use-package typescript-mode
+  :config
+  (setq typescript-indent-level 2)
   :mode (".ts$"))
 
 ;; No major mode support TSX
