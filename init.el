@@ -20,9 +20,9 @@
   (setq exec-path-from-shell-arguments ())
   (exec-path-from-shell-initialize))
 
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
+;; (use-package flycheck
+;;   :ensure t
+;;   :init (global-flycheck-mode))
 
 (use-package tree-sitter
   :config
