@@ -30,3 +30,17 @@
 (defconst my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
 (set-face-attribute 'default nil :family my-font :height 200)
 (set-fontset-font t 'japanese-jisx0208 (font-spec :family my-font)) ; これがないと一部の漢字のフォントがおかしくなる
+
+
+;; Disable syntax highlight when open a large file(such as compressed javascript file)
+;; https://www.reddit.com/r/emacs/comments/a2fac5/opening_large_files/
+(defun conditional-disable-modes ()
+  (when (> (buffer-size) (* 3 1024 1024))
+    (flycheck-mode -1)
+    (font-lock-mode -1)
+    (fundamental-mode)
+    (which-function-mode -1)
+    ))
+
+(add-hook 'prog-mode-hook 'conditional-disable-modes)
+(add-hook 'text-mode-hook 'conditional-disable-modes)
