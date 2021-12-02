@@ -37,7 +37,6 @@
 (eg-load "typescript")
 (eg-load "git")
 (eg-load "ui")
-(eg-load "migemo")
 (eg-load "lsp")
 
 (use-package coffee-mode
