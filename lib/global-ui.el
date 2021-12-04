@@ -7,7 +7,6 @@
 (global-auto-revert-mode 1)
 (delete-selection-mode t)
 
-(electric-pair-mode 1)
 (defvar show-paren-delay 0)
 (defvar show-paren-style 'expression)
 (defvar x-select-enable-clipboard t)

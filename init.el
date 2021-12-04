@@ -168,6 +168,11 @@
   (setq plantuml-output-type "png")
   (setq plantuml-executable-args (append plantuml-executable-args '("-charset" "UTF-8"))))
 
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
