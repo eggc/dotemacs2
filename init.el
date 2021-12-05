@@ -35,6 +35,7 @@
 (eg-load "consult")
 (eg-load "ruby")
 (eg-load "typescript")
+(eg-load "apheleia")
 (eg-load "git")
 (eg-load "ui")
 (eg-load "lsp")
