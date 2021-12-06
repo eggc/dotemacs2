@@ -39,6 +39,7 @@
 (eg-load "git")
 (eg-load "ui")
 (eg-load "lsp")
+(eg-load "flycheck")
 
 (use-package coffee-mode
   :config

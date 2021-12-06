@@ -1,7 +1,4 @@
 ; https://github.com/senny/rbenv.el
-
-(custom-set-variables '(flycheck-ruby-rubocop-executable (concat dotemacs2-directory "bin/flycheck-ruby-rubocop.sh")))
-
 (use-package rbenv
   :config
   (defvar rbenv-show-active-ruby-in-modeline nil)
