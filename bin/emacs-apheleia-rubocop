@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Need rubocop-daemon-wrapper global installed from https://github.com/fohte/rubocop-daemon#more-speed
+RUBOCOP_DAEMON_WRAPPER="rubocop-daemon-wrapper"
+RUBOCOP_OPTIONS="--auto-correct --disable-uncorrectable --stdin $@"
+
+# Run rubocop through stdin in order to export to stdout
+# Delete head lines because output have a report with separator "===================="
+# Another way is using rubocop option "--stderr", but it is not working with rubocop-daemon
+# NOTE: Do not use rubocop option "--format quiet", it may not have separator and then it break sed replacement
+cat $@ | $RUBOCOP_DAEMON_WRAPPER $RUBOCOP_OPTIONS | sed '1,/^====================$/d'
