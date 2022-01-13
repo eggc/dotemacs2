@@ -55,3 +55,7 @@
 (use-package dired-subtree)
 
 (use-package wdired)
+
+(use-package flyspell
+  :config
+  (setq-default ispell-program-name "aspell"))
