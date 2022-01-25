@@ -26,8 +26,7 @@
 
 (use-package tree-sitter
   :config
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-  (global-tree-sitter-mode))
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 (use-package tree-sitter-langs)
 
 (eg-load "built-in")
