@@ -162,7 +162,7 @@
 (use-package smartparens
   :config
   (require 'smartparens-config)
-  (smartparens-global-strict-mode))
+  (smartparens-global-mode))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
