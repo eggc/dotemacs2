@@ -20,10 +20,6 @@
   (setq exec-path-from-shell-arguments ())
   (exec-path-from-shell-initialize))
 
-;; (use-package flycheck
-;;   :ensure t
-;;   :init (global-flycheck-mode))
-
 (use-package tree-sitter
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
@@ -32,13 +28,13 @@
 (eg-load "built-in")
 (eg-load "vertico")
 (eg-load "consult")
+(eg-load "ui")
+(eg-load "git")
 (eg-load "ruby")
 (eg-load "typescript")
-(eg-load "apheleia")
-(eg-load "git")
-(eg-load "ui")
 (eg-load "lsp")
-(eg-load "flycheck")
+;; (eg-load "flycheck")
+;; (eg-load "apheleia")
 
 (use-package coffee-mode
   :config
