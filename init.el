@@ -10,10 +10,6 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package use-package-chords
-  :ensure t
-  :config (key-chord-mode 1))
-
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
@@ -85,13 +81,6 @@
   (setq direnv-always-show-summary nil)
   (direnv-mode))
 
-(use-package key-chord
-  :config
-  (setq key-chord-two-keys-delay 0.04)
-  :chords (("i9" . insert-current-date)
-           ("fp" . file-full-path-org-link-to-clipboard)
-           ("kj" . view-mode)))
-
 (use-package ripgrep
   :if (file-exists-p "/usr/local/bin/rg")
   :config
@@ -106,8 +95,7 @@
   :config
   (setq dumb-jump-max-find-time 5)
   :init
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-  :chords (("dj" . xref-find-definitions)))
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package paradox
  :custom
@@ -138,7 +126,7 @@
 
 (use-package slim-mode)
 (use-package string-inflection
-  :chords (("cy" . string-inflection-ruby-style-cycle)))
+  :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
 
 (use-package rotate)
 (use-package graphql-mode)
@@ -175,4 +163,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(wgrep ripgrep yaml-mode web-mode use-package twittering-mode tide spaceline smex slim-mode rubocop rspec-mode restclient rebecca-theme rbenv projectile-rails paradox nvm key-chord jest idomenu ido-vertical-mode ido-completing-read+ gist forge exec-path-from-shell evil-string-inflection dumb-jump doom-modeline direnv dired-subtree dashboard csv-mode counsel coffee-mode atom-one-dark-theme)))
+   '(wgrep ripgrep yaml-mode web-mode use-package twittering-mode tide spaceline smex slim-mode rubocop rspec-mode restclient rebecca-theme rbenv projectile-rails paradox nvm jest idomenu ido-vertical-mode ido-completing-read+ gist exec-path-from-shell evil-string-inflection dumb-jump doom-modeline direnv dired-subtree dashboard csv-mode counsel coffee-mode atom-one-dark-theme))

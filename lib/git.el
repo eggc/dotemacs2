@@ -3,7 +3,7 @@
   (defvar magit-diff-refine-hunk t)
   (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
-  :chords (("gh" . magit-status)))
+  :bind (("s-g" . magit-status)))
 
 ;; (use-package forge
 ;;   :after magit

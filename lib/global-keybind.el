@@ -21,3 +21,7 @@
 (global-set-key (kbd "s-q") 'version)                      ; 誤操作防止用
 (global-set-key (kbd "M-i") 'imenu)
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+;; 自作関数
+(global-set-key (kbd "C-x C-p") 'file-full-path-org-link-to-clipboard)
+(global-set-key (kbd "C-x C-i") 'insert-current-date)
