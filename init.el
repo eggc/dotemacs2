@@ -29,6 +29,7 @@
 (eg-load "ruby")
 (eg-load "typescript")
 (eg-load "lsp")
+(eg-load "org")
 ;; (eg-load "flycheck")
 ;; (eg-load "apheleia")
 
@@ -148,15 +149,6 @@
   (require 'smartparens-config)
   (smartparens-global-mode))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-comment-dwim ((t (:inherit nil :foreground "#ccccff" :height 1.0))))
- '(org-level-1 ((t (:inherit nil :foreground "#ae81ff" :height 1.0))))
- '(org-level-2 ((t (:inherit nil :foreground "#ccccff" :height 1.0))))
- '(org-link ((t (:inherit nil :foreground "#ffff55" :height 1.0)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
