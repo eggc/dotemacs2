@@ -9,6 +9,12 @@
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   :bind (("s-g" . magit-status)))
 
+(use-package browse-at-remote
+  :config
+  (defun browse-at-remote--get-local-branch () "master") ;; master ブランチを常に見る
+  (defun browse-at-remote--get-remotes () '("upstream")) ;; upstream リポジトリを常に見る
+)
+
 ;; (use-package forge
 ;;   :after magit
 ;;   :config

@@ -73,8 +73,6 @@
   :init (global-company-mode)
   :bind (("C-M-i" . company-complete)))
 
-(use-package browse-at-remote)
-
 (use-package direnv
   :if (file-exists-p "/usr/local/bin/direnv")
   :mode ("\\.env$" . sh-mode)
