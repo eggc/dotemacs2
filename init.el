@@ -1,28 +1,17 @@
+(package-initialize)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'load-path "~/work/dotemacs2/lib/")
 
 (require 'use-package)
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(require 'eg-env)
 (require 'eg-global-keybind)
 (require 'eg-global-ui)
 (require 'eg-functions)
-
-(package-initialize)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(use-package exec-path-from-shell
-  :if (memq window-system '(mac ns x))
-  :config
-  (setq exec-path-from-shell-arguments ())
-  (exec-path-from-shell-initialize))
-
-(use-package tree-sitter
-  :config
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-(use-package tree-sitter-langs)
-
+(require 'eg-tree-sitter)
 (require 'eg-built-in)
 (require 'eg-vertico)
 (require 'eg-consult)
@@ -31,6 +20,7 @@
 (require 'eg-ruby)
 (require 'eg-typescript)
 (require 'eg-lsp)
+(require 'eg-grep)
 ;; (require 'eg-flycheck)
 ;; (require 'eg-apheleia)
 
@@ -40,15 +30,6 @@
     (setq coffee-tab-width 2))
 ))
 
-(use-package wgrep
-  :config
-  (setf wgrep-enable-key "r")
-  (setq wgrep-auto-save-buffer t)
-  (defvar my-ignore-directories '("node_modules" ".bundle" "yardoc" "coverage" "log" "tmp"))
-  (defvar my-ignore-files '("*.min.js" "*.log" "*bundle.js"))
-  (setq grep-find-ignored-directories (append grep-find-ignored-directories my-ignore-directories))
-  (setq grep-find-ignored-files (append grep-find-ignored-files my-ignore-files))
-)
 
 (use-package projectile
   :config
@@ -73,23 +54,6 @@
 (use-package company
   :init (global-company-mode)
   :bind (("C-M-i" . company-complete)))
-
-(use-package direnv
-  :if (file-exists-p "/usr/local/bin/direnv")
-  :mode ("\\.env$" . sh-mode)
-  :config
-  (setq direnv-always-show-summary nil)
-  (direnv-mode))
-
-(use-package ripgrep
-  :if (file-exists-p "/usr/local/bin/rg")
-  :config
-  (defun ripgrep-regexp-with-arguments (regexp directory args)
-  (interactive
-    (list (read-from-minibuffer "Ripgrep search for: ")
-          (read-directory-name "Directory: ")
-          (read-from-minibuffer "optional arguments: ")))
-    (ripgrep-regexp regexp directory (list args))))
 
 (use-package dumb-jump
   :config
@@ -125,11 +89,13 @@
   (go-mode . go-mode-custom-hook))
 
 (use-package slim-mode)
+
 (use-package string-inflection
   :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
 
 (use-package rotate)
 (use-package graphql-mode)
+
 ;; (use-package nvm
 ;;   :config
 ;;   (nvm-use "v10.19.0"))
@@ -149,3 +115,19 @@
   (smartparens-global-mode))
 
 (use-package nginx-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yasnippet yaml-mode yaml wgrep web-mode vertico use-package-chords twittering-mode tree-sitter-langs tide spaceline smex smartparens slim-mode ruby-electric rubocop rspec-mode rotate ripgrep restclient rebecca-theme rbenv projectile-rails plantuml-mode paradox org-superstar orderless nvm nginx-mode markdown-mode magit jest idomenu ido-vertical-mode ido-completing-read+ highlight-indent-guides graphql-mode go-mode gist ghub exec-path-from-shell evil-string-inflection eglot dumb-jump doom-modeline direnv dired-subtree dashboard csv-mode counsel consult company coffee-mode closql browse-at-remote beacon atom-one-dark-theme apheleia)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-headline-done ((t (:foreground "gray"))))
+ '(org-level-1 ((t (:height 1.0))))
+ '(org-level-2 ((t (:height 1.0))))
+ '(org-link ((t (:foreground "lightblue")))))
