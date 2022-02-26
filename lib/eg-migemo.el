@@ -11,3 +11,6 @@
   (setq migemo-regex-dictionary nil)
   (setq migemo-coding-system 'utf-8-unix)
   (migemo-init))
+
+
+(provide 'eg-migemo)

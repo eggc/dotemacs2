@@ -5,3 +5,5 @@
   :hook
   (typescript-mode . eglot-ensure)
   (tsx-mode . eglot-ensure))
+
+(provide 'eg-lsp)

@@ -16,3 +16,5 @@
   (setq xref-show-definitions-function #'ivy-xref-show-defs)
   (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
   (setq ivy-xref-use-file-path t))
+
+(provide 'eg-ivy)

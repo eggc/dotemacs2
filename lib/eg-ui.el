@@ -19,3 +19,5 @@
   (setq highlight-indent-guides-method 'bitmap)
   :hook
   (prog-mode . highlight-indent-guides-mode))
+
+(provide 'eg-ui)

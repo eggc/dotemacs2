@@ -33,3 +33,5 @@
 
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
+
+(provide 'eg-vertico)

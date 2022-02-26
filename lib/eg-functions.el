@@ -51,3 +51,5 @@
     (insert "'")
     (goto-char pos)
     ))
+
+(provide 'eg-functions)

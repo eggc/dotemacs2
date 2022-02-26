@@ -40,3 +40,5 @@
 (add-hook #'before-save-hook #'delete-trailing-whitespace)
 (add-hook #'prog-mode-hook #'conditional-disable-modes)
 (add-hook #'text-mode-hook #'conditional-disable-modes)
+
+(provide 'eg-global-ui)

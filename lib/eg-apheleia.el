@@ -8,3 +8,5 @@
   (typescript-mode . apheleia-mode)
   (tsx-mode . apheleia-mode)
   (ruby-mode . apheleia-mode))
+
+(provide 'eg-apheleia)

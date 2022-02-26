@@ -25,3 +25,5 @@
 ;; 自作関数
 (global-set-key (kbd "C-x C-p") 'file-full-path-org-link-to-clipboard)
 (global-set-key (kbd "C-x C-d") 'insert-current-date)
+
+(provide 'eg-global-keybind)

@@ -1,18 +1,16 @@
-(defvar dotemacs2-directory "~/work/dotemacs2/" "dotemacs2 を git clone したディレクトリ")
-(defun eg-load (feature-name) "dotemacs2 の設定を読み込みます" (load (concat dotemacs2-directory "lib/" feature-name)))
+(add-to-list 'load-path "~/work/dotemacs2/lib/")
 
 (require 'use-package)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
-(eg-load "global-keybind")
-(eg-load "global-ui")
-(eg-load "functions")
+(require 'eg-global-keybind)
+(require 'eg-global-ui)
+(require 'eg-functions)
 
 (package-initialize)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
@@ -25,16 +23,16 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 (use-package tree-sitter-langs)
 
-(eg-load "built-in")
-(eg-load "vertico")
-(eg-load "consult")
-(eg-load "ui")
-(eg-load "git")
-(eg-load "ruby")
-(eg-load "typescript")
-(eg-load "lsp")
-;; (eg-load "flycheck")
-;; (eg-load "apheleia")
+(require 'eg-built-in)
+(require 'eg-vertico)
+(require 'eg-consult)
+(require 'eg-ui)
+(require 'eg-git)
+(require 'eg-ruby)
+(require 'eg-typescript)
+(require 'eg-lsp)
+;; (require 'eg-flycheck)
+;; (require 'eg-apheleia)
 
 (use-package coffee-mode
   :config

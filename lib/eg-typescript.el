@@ -14,3 +14,5 @@
   (define-derived-mode tsx-mode web-mode "TypeScript[TSX]")
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-mode))
   (add-to-list 'tree-sitter-major-mode-language-alist '(tsx-mode . tsx)))
+
+(provide 'eg-typescript)

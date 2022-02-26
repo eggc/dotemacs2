@@ -116,3 +116,5 @@
   ;;;; 4. locate-dominating-file
   ;; (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
 )
+
+(provide 'eg-consult)

@@ -24,3 +24,5 @@
 ;;         '(("#" 5 forge-topic-list-sort-by-number (:right-align t) number nil)
 ;;           ("Assignees" 15 t nil assignees nil)
 ;;           ("Title" 35 t nil title  nil))))
+
+(provide 'eg-git)

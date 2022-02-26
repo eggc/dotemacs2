@@ -1,4 +1,5 @@
 ; built-in packages
+(require 'use-package)
 
 (use-package replace
   :ensure nil
@@ -64,3 +65,5 @@
 (use-package flyspell
   :config
   (setq-default ispell-program-name "aspell"))
+
+(provide 'eg-built-in)
