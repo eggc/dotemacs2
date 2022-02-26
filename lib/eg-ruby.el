@@ -2,6 +2,7 @@
 
 ; https://github.com/senny/rbenv.el
 (use-package rbenv
+  :commands global-rbenv-mode
   :config
   (defvar rbenv-show-active-ruby-in-modeline nil)
   (global-rbenv-mode))

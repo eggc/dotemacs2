@@ -1,4 +1,6 @@
 (require 'use-package)
+(require 'org)
+(require 'dired)
 
 (use-package replace
   :ensure nil
@@ -48,18 +50,18 @@
   :bind (:map dired-mode-map
               ("j" . 'dired-next-line)
               ("k" . 'dired-previous-line)
-              ("<tab>" . 'dired-subtree-insert)
-              ("<backtab>" . 'dired-subtree-remove)
-              ("h" . 'dired-subtree-remove)
               ("r" . 'wdired-change-to-wdired-mode)))
 
 (use-package eww
   :config
   (setq eww-search-prefix "http://www.google.co.jp/search?q="))
 
-(use-package dired-subtree)
-
-(use-package wdired)
+(use-package dired-subtree
+  :commands (dired-subtree-insert dired-subtree-remove)
+  :bind (:map dired-mode-map
+              ("<tab>" . 'dired-subtree-insert)
+              ("<backtab>" . 'dired-subtree-remove)
+              ("h" . 'dired-subtree-remove)))
 
 (use-package flyspell
   :config

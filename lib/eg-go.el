@@ -1,4 +1,5 @@
 (require 'use-package)
+(require 'company)
 
 (use-package go-mode
   :config

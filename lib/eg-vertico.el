@@ -2,6 +2,7 @@
 
 ;; https://github.com/minad/vertico/#configuration
 (use-package vertico
+  :commands vertico-mode
   :init
   (vertico-mode))
 
@@ -21,7 +22,7 @@
   ;; Alternatively try `consult-completing-read-multiple'.
   (defun crm-indicator (args)
     (cons (concat "[CRM] " (car args)) (cdr args)))
-  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+  (advice-add #'completing-read-multiple :filter-args 'crm-indicator)
 
   ;; Do not allow the cursor in the minibuffer prompt
   (setq minibuffer-prompt-properties

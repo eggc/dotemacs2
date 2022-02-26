@@ -15,6 +15,7 @@
 (use-package spaceline)
 (use-package spaceline-config
   :ensure nil
+  :commands (spaceline-emacs-theme spaceline-toggle-minor-modes-off spaceline-toggle-version-control-off spaceline-toggle-global-off)
   :config
   (spaceline-emacs-theme)
   (spaceline-toggle-minor-modes-off)
@@ -28,6 +29,7 @@
   (prog-mode . highlight-indent-guides-mode))
 
 (use-package smartparens
+  :commands smartparens-global-mode
   :config
   (require 'smartparens-config)
   (smartparens-global-mode))
