@@ -23,8 +23,8 @@
 (require 'eg-company)
 (require 'eg-jump)
 (require 'eg-snippet)
+(require 'eg-flycheck)
 
-;; (require 'eg-flycheck)
 ;; (require 'eg-apheleia)
 
 (use-package graphql-mode)
