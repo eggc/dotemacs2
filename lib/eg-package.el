@@ -9,4 +9,6 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
 (provide 'eg-package)
