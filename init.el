@@ -1,4 +1,8 @@
-(load "~/work/dotemacs2/bootstrap")
+(defvar dotemacs2-directory "~/work/dotemacs2/" "dotemacs2 を git clone したディレクトリ")
+(defun eg-load (feature-name) "dotemacs2 の設定を読み込みます" (load (concat dotemacs2-directory "lib/" feature-name)))
+
+(require 'use-package)
+
 (eg-load "global-keybind")
 (eg-load "global-ui")
 (eg-load "functions")
