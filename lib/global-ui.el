@@ -3,8 +3,8 @@
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (column-number-mode t)
-(global-hl-line-mode)
-(global-auto-revert-mode 1)
+(global-hl-line-mode t)
+(global-auto-revert-mode t)
 (delete-selection-mode t)
 
 (defvar show-paren-delay 0)
@@ -17,15 +17,11 @@
 (setq require-final-newline t)
 (setq backup-directory-alist `((".*". ,temporary-file-directory)))
 (setq kill-ring-max 500)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; 長い行（とくに整形されてないjson等の表示）の処理が非常に重いためそれを軽減する
 ; https://emacs.stackexchange.com/questions/598/how-do-i-prevent-extremely-long-lines-making-emacs-slow/601
 (setq-default bidi-display-reordering nil)
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or no の質問を y, n で答えられるようにする
-
-;; これ効いてなさそう
-(set-face-attribute 'show-paren-match nil :inherit 'highlight :underline 'unspecified)
 
 (defconst my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
 (set-fontset-font "fontset-default" 'unicode my-font nil 'prepend)
@@ -37,9 +33,10 @@
   (when (> (buffer-size) (* 3 1024 1024))
     (flycheck-mode -1)
     (font-lock-mode -1)
-    (fundamental-mode)
     (which-function-mode -1)
+    (fundamental-mode)
     ))
 
-(add-hook 'prog-mode-hook 'conditional-disable-modes)
-(add-hook 'text-mode-hook 'conditional-disable-modes)
+(add-hook #'before-save-hook #'delete-trailing-whitespace)
+(add-hook #'prog-mode-hook #'conditional-disable-modes)
+(add-hook #'text-mode-hook #'conditional-disable-modes)
