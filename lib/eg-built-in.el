@@ -1,4 +1,3 @@
-; built-in packages
 (require 'use-package)
 
 (use-package replace

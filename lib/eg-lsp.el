@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(typescript-mode . ("/Users/eguchi.ken/.nvm/versions/node/v12.19.0/bin/typescript-language-server" "--stdio")))

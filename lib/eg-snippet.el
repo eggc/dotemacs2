@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package yasnippet
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))

@@ -1,3 +1,5 @@
+(require 'use-package)
+
 ;; https://github.com/minad/consult#configuration
 ;; Example configuration for Consult
 (use-package consult

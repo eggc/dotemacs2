@@ -1,3 +1,5 @@
+(require 'use-package)
+
 ; https://github.com/senny/rbenv.el
 (use-package rbenv
   :config

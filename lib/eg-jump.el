@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package dumb-jump
   :config
   (setq dumb-jump-max-find-time 5)

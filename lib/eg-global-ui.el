@@ -31,14 +31,13 @@
 ;; https://www.reddit.com/r/emacs/comments/a2fac5/opening_large_files/
 (defun conditional-disable-modes ()
   (when (> (buffer-size) (* 3 1024 1024))
-    (flycheck-mode -1)
     (font-lock-mode -1)
     (which-function-mode -1)
     (fundamental-mode)
     ))
 
-(add-hook #'before-save-hook #'delete-trailing-whitespace)
-(add-hook #'prog-mode-hook #'conditional-disable-modes)
-(add-hook #'text-mode-hook #'conditional-disable-modes)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'prog-mode-hook #'conditional-disable-modes)
+(add-hook 'text-mode-hook #'conditional-disable-modes)
 
 (provide 'eg-global-ui)

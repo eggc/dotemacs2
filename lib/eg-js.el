@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package js
   :config
   (setq js-indent-level 2))

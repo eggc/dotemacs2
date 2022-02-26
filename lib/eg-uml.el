@@ -1,3 +1,5 @@
+(require 'use-package)
+
 ;; https://skoji.jp/blog/2020/01/plantuml.html
 (use-package plantuml-mode
   :mode ("\\.plantuml\\'" "\\.uml\\'")

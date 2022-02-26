@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package rebecca-theme
   :config
   (load-theme 'rebecca t))

@@ -1,3 +1,5 @@
+(require 'use-package)
+
 ;; https://github.com/minad/vertico/#configuration
 (use-package vertico
   :init

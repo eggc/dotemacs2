@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package wgrep
   :config
   (setf wgrep-enable-key "r")
