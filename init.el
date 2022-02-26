@@ -29,7 +29,6 @@
 (eg-load "ruby")
 (eg-load "typescript")
 (eg-load "lsp")
-(eg-load "org")
 ;; (eg-load "flycheck")
 ;; (eg-load "apheleia")
 

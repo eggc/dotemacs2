@@ -17,12 +17,17 @@
 
 (use-package org
   :ensure nil
+  :custom-face
+  (org-level-1 ((t (:height 1.0))))
+  (org-level-2 ((t (:height 1.0))))
+  (org-link ((t (:foreground "lightblue"))))
+  (org-headline-done ((t (:foreground "gray"))))
   :config
-  (add-hook 'org-mode-hook (lambda ()
+  (setq org-src-tab-acts-natively nil)
   (setq org-hide-leading-stars t)
   (setq org-hide-emphasis-markers t)
   (defvar org-indent-indentation-per-level 8)
-  (setq org-todo-keywords '((sequence "TODO" "DOING" "|" "DONE")))
+  (add-hook 'org-mode-hook (lambda ()
   (local-unset-key (kbd "M-h"))
   (local-unset-key (kbd "C-M-t"))
   (org-indent-mode t))))
