@@ -2,7 +2,6 @@
 
 ;; https://github.com/minad/vertico/#configuration
 (use-package vertico
-  :commands vertico-mode
   :init
   (vertico-mode))
 
