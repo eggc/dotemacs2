@@ -23,9 +23,12 @@
 (setq-default bidi-display-reordering nil)
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or no の質問を y, n で答えられるようにする
 
-(defconst my-font (if (member "Ricty" (font-family-list)) "Ricty" "Monaco"))
-(set-fontset-font "fontset-default" 'unicode my-font nil 'prepend)
-(set-face-attribute 'default nil :family my-font :height 200)
+(let ((my-font-main (if (member "Ricty" (font-family-list)) "Ricty-20"  "Monaco-20"))
+      (my-font-sub (if (member "mplus Nerd Font" (font-family-list)) "mplus Nerd Font-20"  "Monaco-20")))
+  (create-fontset-from-ascii-font my-font-main nil "eggc")
+  (set-fontset-font "fontset-eggc" 'unicode my-font-main)
+  (set-fontset-font "fontset-eggc" 'unicode my-font-sub nil 'append)
+  (add-to-list 'default-frame-alist '(font . "fontset-eggc")))
 
 ;; Disable syntax highlight when open a large file(such as compressed javascript file)
 ;; https://www.reddit.com/r/emacs/comments/a2fac5/opening_large_files/
