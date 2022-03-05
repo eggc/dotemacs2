@@ -31,4 +31,5 @@
 (use-package nginx-mode)
 (use-package slim-mode)
 
+(use-package imenu-list)
 (use-package string-inflection :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
