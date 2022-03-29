@@ -23,6 +23,7 @@
 (require 'eg-company)
 (require 'eg-jump)
 (require 'eg-snippet)
+(require 'eg-flymake)
 (require 'eg-flycheck)
 
 ;; (require 'eg-apheleia)
