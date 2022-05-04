@@ -22,8 +22,6 @@
   (spaceline-toggle-global-off))
 
 (use-package highlight-indent-guides
-  :config
-  (setq highlight-indent-guides-method 'bitmap)
   :hook
   (prog-mode . highlight-indent-guides-mode))
 
