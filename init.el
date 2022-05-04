@@ -32,5 +32,5 @@
 (use-package nginx-mode)
 (use-package slim-mode)
 
-(use-package imenu-list)
+(use-package imenu-list :config (setq imenu-max-item-length 256))
 (use-package string-inflection :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
