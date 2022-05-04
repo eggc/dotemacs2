@@ -30,4 +30,8 @@
   (require 'smartparens-config)
   (smartparens-global-mode))
 
+(use-package auto-dim-other-buffers
+  :config
+  (auto-dim-other-buffers-mode))
+
 (provide 'eg-ui)
