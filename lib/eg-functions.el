@@ -24,7 +24,7 @@
         (name (file-name-nondirectory buffer-file-name))
         (word (thing-at-point 'symbol)))
     (if word
-        (to-clipboard (concat "[[" path "][" name ": " word "]]"))
+        (to-clipboard (concat "[[" path "][" word "]]"))
       (to-clipboard (concat "[[" path "][" name "]]")))))
 
 (defun insert-current-time ()
