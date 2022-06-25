@@ -8,7 +8,6 @@
   (remove-hook #'magit-status-sections-hook #'magit-insert-unpushed-to-upstream-or-recent)
   (remove-hook #'magit-status-sections-hook #'magit-insert-unpushed-to-pushremote)
   (remove-hook #'magit-refs-sections-hook   #'magit-insert-tags)
-  (remove-hook #'server-switch-hook         #'magit-commit-diff)
   :bind (("s-g" . magit-status)))
 
 (use-package browse-at-remote
