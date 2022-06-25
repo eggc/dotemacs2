@@ -2,6 +2,7 @@
 
 ; https://github.com/senny/rbenv.el
 (use-package rbenv
+  :commands rbenv--update-mode-line global-rbenv-mode
   :config
   ;; Do not show ruby version in the modeline
   (advice-add #'rbenv--update-mode-line :override (lambda ()))
