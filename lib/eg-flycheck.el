@@ -1,6 +1,7 @@
 (require 'use-package)
 
 (use-package flycheck
+  :diminish flycheck-mode
   :hook
   (emacs-lisp-mode . flycheck-mode)
   :bind (("s-e" . flycheck-list-errors))

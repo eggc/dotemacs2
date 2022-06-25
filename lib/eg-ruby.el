@@ -16,6 +16,7 @@
   :mode ("\\Gemfile$" "\\Schemafile$" "\\Steepfile$" "\\ruby$" "\\rbs$" "\\.rake$"))
 
 (use-package rubocop
+  :diminish rubocop-mode
   :hook
   (ruby-mode . rubocop-mode)
   :bind (("C-c , R" . rubocop-autocorrect-current-file)
@@ -34,6 +35,7 @@
   )
 
 (use-package ruby-electric
+  :diminish ruby-electric-mode
   :hook ((ruby-mode . ruby-electric-mode)))
 
 (provide 'eg-ruby)
