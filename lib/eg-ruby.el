@@ -3,7 +3,8 @@
 ; https://github.com/senny/rbenv.el
 (use-package rbenv
   :config
-  (defvar rbenv-show-active-ruby-in-modeline nil)
+  ;; Do not show ruby version in the modeline
+  (advice-add #'rbenv--update-mode-line :override (lambda ()))
   (global-rbenv-mode))
 
 (use-package ruby-mode
