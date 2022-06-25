@@ -12,15 +12,6 @@
   (setq dashboard-set-init-info t)
   (dashboard-setup-startup-hook))
 
-(use-package spaceline)
-(use-package spaceline-config
-  :ensure nil
-  :config
-  (spaceline-emacs-theme)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-version-control-off)
-  (spaceline-toggle-global-off))
-
 (use-package highlight-indent-guides
   :hook
   (prog-mode . highlight-indent-guides-mode))
