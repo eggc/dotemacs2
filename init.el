@@ -15,6 +15,7 @@
 (require 'eg-go)
 (require 'eg-js)
 (require 'eg-typescript)
+(require 'eg-shellscript)
 (require 'eg-lsp)
 (require 'eg-yaml)
 (require 'eg-uml)
@@ -25,6 +26,7 @@
 (require 'eg-snippet)
 (require 'eg-flymake)
 (require 'eg-flycheck)
+
 
 ;; (require 'eg-apheleia)
 
