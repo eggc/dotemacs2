@@ -10,6 +10,9 @@
 (use-package diminish)
 (advice-add 'vc-git-mode-line-string :override (lambda (file) ""))
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
 (use-package dashboard
   :config
   (setq dashboard-set-init-info t)
