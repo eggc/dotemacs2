@@ -42,6 +42,11 @@
        "echo -n $(LC_ALL=ja_JP date -v-%dd +'%%Y/%%m/%%d (%%a)')"
        (or diff 0)))))
 
+(defun build-rspec-command ()
+  "今開いているファイルの rspec 実行コマンドをクリップボードにコピーします"
+  (interactive)
+  (to-clipboard (concat "bin/rspec " (buffer-file-name))))
+
 (defun quote-current-line ()
   (interactive)
   (let ((pos (point)))
@@ -54,5 +59,6 @@
 
 (global-set-key (kbd "C-x C-p") #'file-full-path-org-link-to-clipboard)
 (global-set-key (kbd "C-x C-d") #'insert-current-date)
+(global-set-key (kbd "C-c , r") #'build-rspec-command)
 
 (provide 'eg-functions)
