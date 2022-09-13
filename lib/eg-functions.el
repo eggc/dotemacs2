@@ -59,6 +59,6 @@
 
 (global-set-key (kbd "C-x C-p") #'file-full-path-org-link-to-clipboard)
 (global-set-key (kbd "C-x C-d") #'insert-current-date)
-(global-set-key (kbd "C-c , r") #'build-rspec-command)
+(global-set-key (kbd "C-c C-t") #'build-rspec-command)
 
 (provide 'eg-functions)
