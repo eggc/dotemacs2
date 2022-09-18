@@ -4,6 +4,7 @@
   :diminish flycheck-mode
   :hook
   (emacs-lisp-mode . flycheck-mode)
+  (ruby-mode . flycheck-mode)
   :bind (("s-e" . flycheck-list-errors))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit)

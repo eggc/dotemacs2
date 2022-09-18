@@ -17,6 +17,8 @@
 
 (use-package rubocop
   :diminish rubocop-mode
+  :config
+  (setq rubocop-autocorrect-command "rubocop -A --format emacs")
   :hook
   (ruby-mode . rubocop-mode)
   :bind (("C-c , R" . rubocop-autocorrect-current-file)
