@@ -28,16 +28,26 @@
   (add-to-list 'default-frame-alist '(font . "fontset-eggc")))
 
 ;; Disable syntax highlight when open a large file(such as compressed javascript file)
+;; https://gist.github.com/jidaikobo-shibata/96e00bd843c838f45ab8183e286150ec
 ;; https://www.reddit.com/r/emacs/comments/a2fac5/opening_large_files/
-(defun conditional-disable-modes ()
-  (when (> (buffer-size) (* 3 1024 1024))
-    (font-lock-mode -1)
-    (which-function-mode -1)
-    (fundamental-mode)
-    ))
+(defun open-large-file-quickly()
+  "To read large file."
+  (interactive)
+  (progn
+    (when (file-exists-p (buffer-file-name))
+      (let* ((file-name (buffer-file-name (current-buffer)))
+             (f-attr (file-attributes file-name))
+             (f-size (nth 7 f-attr))
+             (is-large (>= f-size 350000)))
+        (if (not (string= (substring (buffer-file-name) 0 1) "*"))
+            (progn
+              (when is-large
+                (message "File Size: %s Bytes, Opened by less function mode" f-size)
+                (fundamental-mode)
+                (font-lock-mode -1)
+                (which-function-mode -1))))))))
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
-(add-hook 'prog-mode-hook #'conditional-disable-modes)
-(add-hook 'text-mode-hook #'conditional-disable-modes)
+(add-hook 'find-file-hook #'open-large-file-quickly)
 
 (provide 'eg-global-ui)
