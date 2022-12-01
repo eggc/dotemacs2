@@ -15,6 +15,8 @@
 (setq backup-directory-alist `((".*". ,temporary-file-directory)))
 (setq kill-ring-max 500)
 
+(server-start)
+
 ; 長い行（とくに整形されてないjson等の表示）の処理が非常に重いためそれを軽減する
 ; https://emacs.stackexchange.com/questions/598/how-do-i-prevent-extremely-long-lines-making-emacs-slow/601
 (setq-default bidi-display-reordering nil)
