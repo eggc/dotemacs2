@@ -29,10 +29,20 @@
   (setq org-hide-leading-stars t)
   (setq org-hide-emphasis-markers t)
   (defvar org-indent-indentation-per-level 8)
+  (setq-default prettify-symbols-alist '((":PROPERTIES:" . "»")
+                                         (":LOGBOOK:" . "›")
+                                         (":END:" . "›")
+                                         ("#+begin_src" . "▨")
+                                         ("#+end_src" . "▨")
+                                         ("#+RESULTS:" . "▨")
+                                         ("[ ]" .  "☐")
+                                         ("[X]" . "☑" )
+                                         ("[-]" . "☒" )))
+  (add-hook 'org-mode-hook 'prettify-symbols-mode)
   (add-hook 'org-mode-hook (lambda ()
-  (local-unset-key (kbd "M-h"))
-  (local-unset-key (kbd "C-M-t"))
-  (org-indent-mode t))))
+                             (local-unset-key (kbd "M-h"))
+                             (local-unset-key (kbd "C-M-t"))
+                             (org-indent-mode t))))
 
 (use-package recentf
   :ensure nil
