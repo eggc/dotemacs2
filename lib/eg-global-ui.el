@@ -22,12 +22,18 @@
 (setq-default bidi-display-reordering nil)
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or no の質問を y, n で答えられるようにする
 
-(let ((my-font-main (if (member "Ricty" (font-family-list)) "Ricty-20"  "Monaco-20"))
-      (my-font-sub (if (member "mplus Nerd Font" (font-family-list)) "mplus Nerd Font-20"  "Monaco-20")))
+(require 'cl-seq)
+(defun eg-find-font(my-font-list) (car (last (cl-intersection (font-family-list) my-font-list :test #'equal))))
+
+(let ((my-font-main (eg-find-font '("HackGen Console NF" "Ricty" "Monaco")))
+      (my-font-sub (eg-find-font '("mplus Nerd Font" "Monaco"))))
   (create-fontset-from-ascii-font my-font-main nil "eggc")
   (set-fontset-font "fontset-eggc" 'unicode my-font-main)
   (set-fontset-font "fontset-eggc" 'unicode my-font-sub nil 'append)
   (add-to-list 'default-frame-alist '(font . "fontset-eggc")))
+
+; 原因不明だがこの時点でデフォルトセットするとクリアされてしまうのでわざと遅延させる
+(run-at-time 3 nil (lambda () (set-face-attribute 'default nil :family (eg-find-font '("HackGen Console NF" "Ricty" "Monaco")) :height 200)))
 
 ;; Disable syntax highlight when open a large file(such as compressed javascript file)
 ;; https://gist.github.com/jidaikobo-shibata/96e00bd843c838f45ab8183e286150ec
