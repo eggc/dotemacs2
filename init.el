@@ -36,3 +36,4 @@
 
 (use-package imenu-list :config (setq imenu-max-item-length 256))
 (use-package string-inflection :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
+(use-package atomic-chrome :config (atomic-chrome-start-server))
