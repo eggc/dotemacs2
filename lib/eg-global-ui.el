@@ -32,8 +32,12 @@
   (set-fontset-font "fontset-eggc" 'unicode my-font-sub nil 'append)
   (add-to-list 'default-frame-alist '(font . "fontset-eggc")))
 
-; 原因不明だがこの時点でデフォルトセットするとクリアされてしまうのでわざと遅延させる
-(run-at-time 3 nil (lambda () (set-face-attribute 'default nil :family (eg-find-font '("HackGen Console NF" "Ricty" "Monaco")) :height 200)))
+(defun eg-delayed-setup ()
+  "原因不明だが起動時点でデフォルトセットするとクリアされてしまうのでわざと数秒遅延させる"
+  (run-at-time 0.25 nil (lambda ()
+                          (set-face-font 'default "fontset-eggc")
+                          (set-face-attribute 'default nil :height 200))))
+(add-hook 'after-init-hook 'eg-delayed-setup)
 
 ;; Disable syntax highlight when open a large file(such as compressed javascript file)
 ;; https://gist.github.com/jidaikobo-shibata/96e00bd843c838f45ab8183e286150ec
