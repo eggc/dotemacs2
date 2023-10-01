@@ -20,7 +20,7 @@
 ; 長い行（とくに整形されてないjson等の表示）の処理が非常に重いためそれを軽減する
 ; https://emacs.stackexchange.com/questions/598/how-do-i-prevent-extremely-long-lines-making-emacs-slow/601
 (setq-default bidi-display-reordering nil)
-(fset 'yes-or-no-p 'y-or-n-p) ; yes or no の質問を y, n で答えられるようにする
+(setq use-short-answers t) ; yes or no の質問を y, n で答えられるようにする
 
 (require 'cl-seq)
 (defun eg-find-font(my-font-list) (car (last (cl-intersection (font-family-list) my-font-list :test #'equal))))
