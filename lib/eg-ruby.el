@@ -41,10 +41,10 @@
     ))
 
 (use-package rspec-mode
+  :straight (rspec-mode :type git :host github :repo "pezra/rspec-mode" :fork (:host github :repo "eggc/rspec-mode"))
   :config
-  (setq rspec-use-spring-when-possible nil)
+  (setq rspec-use-binstub-when-possible t)
   (setq compilation-scroll-output "first-error")
-  (defun rspec-runner () "bin/rspec")
   (advice-add 'rspec-specize-file-name :filter-args 'rspec-specize-file-name-advice)
   (advice-add 'rspec-targetize-file-name :filter-args 'rspec-targetize-file-name-advice)
   ;; @see https://github.com/pezra/rspec-mode#debugging
