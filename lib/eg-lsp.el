@@ -12,6 +12,12 @@
    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
+  (defun lsp-ruby-lsp--execute-command (command buffer-name)
+    (let* ((default-directory (lsp-workspace-root))
+           (buffer (progn
+                     (when (get-buffer buffer-name) (kill-buffer buffer-name))
+                     (generate-new-buffer buffer-name))))
+      (async-shell-command command buffer)))
   (defun lsp-ruby-lsp--open-file (arg_hash)
     "Open file for ruby-lsp-rails"
     (let* ((arguments (gethash "arguments" arg_hash))
@@ -24,13 +30,13 @@
   (defun lsp-ruby-lsp--run-test (arg_hash)
     "Run test for ruby-lsp-rails"
     (let* ((arguments (gethash "arguments" arg_hash))
-           (command (aref arguments 2))
-           (default-directory (lsp-workspace-root))
-           (buffer-name "*run test results*")
-           (buffer (progn
-                     (when (get-buffer buffer-name) (kill-buffer buffer-name))
-                     (generate-new-buffer buffer-name))))
-      (async-shell-command command buffer)))
+           (command (aref arguments 2)))
+      (lsp-ruby-lsp--execute-command command "*ruby-lsp run test*")))
+  (defun lsp-ruby-lsp--run-task (arg_hash)
+    "Run test for ruby-lsp-rails"
+    (let* ((arguments (gethash "arguments" arg_hash))
+           (command (aref arguments 0)))
+      (lsp-ruby-lsp--execute-command command "*ruby-lsp run task*")))
 
   (lsp-register-client
    (make-lsp-client
@@ -38,6 +44,7 @@
     :activation-fn (lsp-activate-on "ruby")
     :priority 100
     :action-handlers (ht ("rubyLsp.openFile" #'lsp-ruby-lsp--open-file)
+                         ("rubyLsp.runTask" #'lsp-ruby-lsp--run-task)
                          ("rubyLsp.runTest" #'lsp-ruby-lsp--run-test)
                          ("rubyLsp.runTestInTerminal" #'lsp-ruby-lsp--run-test))
     :server-id 'ruby-lsp-ls2)))
