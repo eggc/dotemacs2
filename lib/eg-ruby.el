@@ -56,6 +56,9 @@
          ("C-c C-, C-s" . rspec-verify-single))
   )
 
+(use-package web-mode
+  :mode ("\\.erb$"))
+
 (use-package ruby-electric
   :diminish ruby-electric-mode
   :hook ((ruby-mode . ruby-electric-mode)))
