@@ -1,4 +1,7 @@
-(add-to-list 'load-path "~/work/dotemacs2/lib/")
+(defconst eg-custom-load-path (or (getenv "EG_CUSTOM_LOAD_PATH") "~/private/dotemacs2/lib/"))
+(defconst eg-enable-copilot (equal (getenv "EG_ENABLE_COPILOT") "1"))
+
+(add-to-list 'load-path eg-custom-load-path)
 
 ;; https://github.com/radian-software/straight.el
 (defvar bootstrap-version)
@@ -41,7 +44,6 @@
 (require 'eg-flymake)
 (require 'eg-flycheck)
 
-
 ;; (require 'eg-apheleia)
 
 (use-package graphql-mode)
@@ -54,5 +56,5 @@
 (use-package string-inflection :bind (("C-x C-y" . string-inflection-ruby-style-cycle)))
 (use-package atomic-chrome :config (atomic-chrome-start-server))
 
-(when (getenv "EMACS_ENABLE_COPILOT")
+(when eg-enable-copilot
   (use-package copilot :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))))

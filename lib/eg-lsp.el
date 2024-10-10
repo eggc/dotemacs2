@@ -3,6 +3,7 @@
 (require 'lsp-ruby-lsp)
 
 (use-package lsp-mode
+  :if (executable-find "ruby-lsp")
   :init
   (setq lsp-keymap-prefix "s-l")
   (setq lsp-disabled-clients '(rubocop-ls))
