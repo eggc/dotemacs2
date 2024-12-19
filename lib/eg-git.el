@@ -22,9 +22,6 @@
   :commands
   browse-at-remote--get-local-branch
   browse-at-remote--get-remotes
-  :config
-  (advice-add #'browse-at-remote--get-local-branch :override (lambda () "master")) ;; master ブランチを常に見る
-  (advice-add #'browse-at-remote--get-remotes :override (lambda () '("upstream"))) ;; upstream リポジトリを常に見る
 )
 
 (provide 'eg-git)
