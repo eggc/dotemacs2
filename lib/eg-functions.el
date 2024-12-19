@@ -1,3 +1,5 @@
+(require 'project)
+
 (defun file-full-path ()
   "今開いているファイルの絶対パス::行数を返します"
   (if (equal major-mode 'dired-mode)
@@ -45,7 +47,10 @@
 (defun build-rspec-command ()
   "今開いているファイルの rspec 実行コマンドをクリップボードにコピーします"
   (interactive)
-  (to-clipboard (concat "bin/rspec " (buffer-file-name))))
+  (let* ((project-root-path (project-root (project-current)))
+        (buffer-path (substring (buffer-file-name) (length project-root-path))))
+    (to-clipboard (concat "bundle exec rspec " buffer-path))
+    ))
 
 (defun quote-current-line ()
   (interactive)
