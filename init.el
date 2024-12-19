@@ -1,4 +1,5 @@
 (defconst eg-custom-load-path (or (getenv "EG_CUSTOM_LOAD_PATH") "~/private/dotemacs2/lib/"))
+(defconst eg-deepl-api-key (getenv "EG_DEEPL_API_KEY"))
 (defconst eg-enable-copilot (equal (getenv "EG_ENABLE_COPILOT") "1"))
 
 (add-to-list 'load-path eg-custom-load-path)
@@ -73,3 +74,13 @@
     (add-to-list 'copilot-indentation-alist '(text-mode 2))
     (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
     ))
+
+(when eg-deepl-api-key
+  (use-package txl
+    :straight (:host github :repo "tmalsburg/txl.el")
+    :bind (("C-c t" . txl-translate-region-or-paragraph))
+    :config
+    (setq txl-languages '(JA . EN-US))
+    (setq txl-deepl-api-key eg-deepl-api-key)
+    (setq txl-deepl-api-url "https://api-free.deepl.com/v2/translate")
+))
