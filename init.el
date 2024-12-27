@@ -23,7 +23,6 @@
 (require 'eg-global-keybind)
 (require 'eg-global-ui)
 (require 'eg-env)
-(require 'eg-tree-sitter)
 (require 'eg-built-in)
 (require 'eg-vertico)
 (require 'eg-consult)
