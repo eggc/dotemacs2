@@ -72,7 +72,14 @@
     (add-to-list 'copilot-indentation-alist '(org-mode 2))
     (add-to-list 'copilot-indentation-alist '(text-mode 2))
     (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
-    ))
+    (setopt copilot-max-char-warning-disable t)
+    (setopt copilot-indent-offset-warning-disable t)
+    )
+  (use-package shell-maker)
+  (use-package copilot-chat
+    :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
+    :after (request org markdown-mode shell-maker))
+)
 
 (when eg-deepl-api-key
   (use-package txl
