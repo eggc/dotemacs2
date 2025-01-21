@@ -16,6 +16,8 @@
   (remove-hook #'magit-status-sections-hook #'magit-insert-unpushed-to-upstream-or-recent)
   (remove-hook #'magit-status-sections-hook #'magit-insert-unpushed-to-pushremote)
   (remove-hook #'magit-refs-sections-hook   #'magit-insert-tags)
+  (defun git-commit-mode-hooks () (setq fill-column 120))
+  (add-hook 'git-commit-mode-hook 'git-commit-mode-hooks)
   :bind (("s-g" . magit-status)))
 
 (use-package browse-at-remote
