@@ -62,6 +62,15 @@
     (goto-char pos)
     ))
 
+(defun open-pull-request ()
+  "Run the shell command 'gh pr view --web <word>' to open the PR in the web browser.
+<word> is the word at the current cursor position or a user-provided input."
+  (interactive)
+  (let* ((word-at-point (thing-at-point 'symbol t))
+         (default-command (concat "gh pr view --web " (or word-at-point "")))
+         (command (read-string "Run command: " default-command)))
+    (shell-command command)))
+
 (global-set-key (kbd "C-x C-p") #'file-full-path-org-link-to-clipboard)
 (global-set-key (kbd "C-x C-d") #'insert-current-date)
 (global-set-key (kbd "C-c C-t") #'build-rspec-command)
