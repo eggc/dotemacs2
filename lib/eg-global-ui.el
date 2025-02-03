@@ -34,10 +34,9 @@
 
 (defun eg-delayed-setup ()
   "原因不明だが起動時点でデフォルトセットするとクリアされてしまうのでわざと数秒遅延させる"
-  (run-at-time 0.5 nil (lambda ()
-                         (set-face-font 'default "fontset-eggc")
-                         (set-face-attribute 'default nil :height 200))))
-(add-hook 'after-init-hook 'eg-delayed-setup)
+  (set-face-font 'default "fontset-eggc")
+  (set-face-attribute 'default nil :height 200))
+(add-hook 'window-setup-hook 'eg-delayed-setup)
 
 ;; Disable syntax highlight when open a large file(such as compressed javascript file)
 ;; https://gist.github.com/jidaikobo-shibata/96e00bd843c838f45ab8183e286150ec
