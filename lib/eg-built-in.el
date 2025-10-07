@@ -56,6 +56,7 @@
   :config
   (setq dired-use-ls-dired nil)
   (setq dired-dwim-target t) ; 2個のdiredバッファがある時、コピー/移動先のパスを他方のバッファにする
+  (setq dired-listing-switches "-alh")
   (unbind-key "C-t" dired-mode-map)
   :bind (:map dired-mode-map
               ("j" . 'dired-next-line)
